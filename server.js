@@ -3,8 +3,10 @@ require('dotenv').config();
 const URI = process.env.DBURI;
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 let app = express();
+app.set('view engine', 'pug')
 
 // when receiving id and movie form server, adds movie to corresponding list in database
 app.get('/add', cors(), async function(req, res) {
@@ -91,7 +93,29 @@ app.get('/remove', cors(), async function(req, res) {
     res.send([id]);
 });
 
+app.get('/lists', cors(), async function(req, res) {
+    let id = req.query.id;
 
+    const client = new MongoClient(URI);
+
+    try {
+        await client.connect();
+        var db = client.db('recfilms');
+        var movieDoc = await db.collection('lists').findOne(
+            {id: id},
+            {movies: 1}
+        );
+
+        let movieList = movieDoc.movies;
+        console.log(movieList);
+        res.render('list', {movies: movieList});
+        //res.send(movieList);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+}); 
 
 app.listen(process.env.PORT || 3001, () => {
     console.log("server listening...");

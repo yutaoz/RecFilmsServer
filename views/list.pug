@@ -1,0 +1,14 @@
+html
+    head 
+        style
+            include style.css
+        title= 'Movie List'
+    body 
+        div(class='container')
+            ul 
+                each val in movies
+                    li 
+                        div(class='item')
+                            figure(class='movieitem') 
+                                img(src=val.Poster)
+                                figcaption= val.Title + ' - ' + val.Year

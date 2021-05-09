@@ -1,0 +1,40 @@
+body {
+    background-color: #141414;
+}
+
+.container {
+    width: 100vw;
+    max-width: 100%;
+    text-align: center;
+}
+
+.item {
+    display: block;
+    margin: auto;
+    margin-top: 5vh;
+}
+.movieItem {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 40vw;
+    background-color: black;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px 5px orchid;
+}
+
+.movieItem figcaption{
+    display: block;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+.movieItem img{
+    margin-top: 10px;
+    width: 6vw;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px white;
+}
