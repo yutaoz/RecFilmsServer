@@ -93,6 +93,7 @@ app.get('/remove', cors(), async function(req, res) {
     res.send([id]);
 });
 
+// serve webpage to show list
 app.get('/lists', cors(), async function(req, res) {
     let id = req.query.id;
 
