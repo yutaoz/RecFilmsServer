@@ -76,8 +76,9 @@ app.get('/remove', cors(), async function(req, res) {
         );
 
         let movieList = movieDoc.movies;
-        const index = movieList.indexOf(movieObj);
+        const index = movieList.findIndex(e => e.Title === movieObj.Title && e.Year === movieObj.Year);
         movieList.splice(index, 1);
+        console.log(index);
         await db.collection('lists').updateOne(
             { id: id },
             {
